@@ -4,27 +4,50 @@ namespace Text_Adventure
 {
     internal class Program
     {
-        static void Main(string[] args)
+        static void TypeLine(string line, int delay = 50)
         {
-            Console.WriteLine("I will take over this dying world");
-            Console.WriteLine("Will you struggle or die");
-            
-            string input = Console.ReadLine();
-            if (input == "Yes" || input == "Yes")
+            for (int i = 0; i < line.Length; i++)
             {
-                Console.WriteLine("");
-            }
-            else if(input.ToUpper() == "NO")
-            {
-                Console.WriteLine("");
-            }
-            else
-            {
-
+                Console.Write(line[i]);
+                Thread.Sleep(delay); // Sleep for 150 milliseconds
             }
         }
+        static void Main(string[] args)
+        {
 
-        void Choice1()
+            Random r = new Random();
+            int rInt = r.Next(9000, 10000);
+
+            TypeLine("tamriel\r\n", rInt);
+            Console.WriteLine(rInt);
+            TypeLine("tamriel\r\n", rInt);
+            rInt = r.Next(0, 10);
+            Console.WriteLine(rInt);
+
+            //Console.WriteLine("What is Your Name");
+            //string playerName = Console.ReadLine();
+            //Console.WriteLine("why " + playerName);
+
+            //Console.WriteLine("\r\nI will take over this dying world");
+            //Console.WriteLine("Will you struggle or die");
+
+
+            //string input = Console.ReadLine();
+            //if (input == "Yes" || input == "Y" || input == "yes" || input == "YES" || input == "y")
+            //{
+            //    Console.WriteLine("Lame");
+            //}
+            //else if (input.ToUpper() == "NO" || input.ToUpper() == "N")
+            //{
+            //    Console.WriteLine("Dude y");
+            //}
+            //else
+            //{
+            //    Console.WriteLine("tank");
+            //}
+            Console.ReadKey();
+        }
+        
 
     }
 }
