@@ -7,6 +7,8 @@ namespace Text_Adventure
         static bool isDev = false;
         static int rInt;
         static int lineDelay = 500;
+        static int redGreenOrBluePurple = 1;
+        static string playerName = "lol";
 
         /// <summary>
         /// this both types words letter by letter but doesn't starts the next line 
@@ -29,9 +31,21 @@ namespace Text_Adventure
         /// <param name="line">The text your going to display</param>
         /// <param name="delay">The time between each key type </param>
         static void TypeLine(string line, int delay = 50, int lineDelay = 250)
-        {
+        {            
             Type(line, delay);
             Console.WriteLine();
+            if (redGreenOrBluePurple == 1 && playerName == "Derek")
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.BackgroundColor = ConsoleColor.Green;
+                redGreenOrBluePurple *= -1;
+            }
+            else if(redGreenOrBluePurple == -1)
+            {
+                Console.ForegroundColor = ConsoleColor.Blue;
+                Console.BackgroundColor = ConsoleColor.Magenta;
+                redGreenOrBluePurple *= -1;
+            }
             Thread.Sleep(lineDelay);
         }
 
@@ -70,6 +84,14 @@ namespace Text_Adventure
                 lineDelay = 0;
                 rInt = 0;
             }
+            if (playerName == "Derek")
+            {
+                //isDev = true;
+                //lineDelay = 0;
+                //rInt = 0;
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.BackgroundColor = ConsoleColor.Green;
+            }
 
 
             TypeLine("Hello " + playerName + " welcome to Sno-isle a place trying so hard to keep a superficial stabilty only mimicing that of pre-pandemic", GetR());
@@ -81,8 +103,9 @@ namespace Text_Adventure
 
             TypeLine("You have mail", GetR());
 
-
             Console.Beep(800, 500);
+
+
 
 
 
@@ -106,28 +129,29 @@ namespace Text_Adventure
 
             //example code
             {
-                //Console.WriteLine("What is Your Name");
+                Console.WriteLine("What is Your Name");
                 //string playerName = Console.ReadLine();
-                //Console.WriteLine("why " + playerName);
+                Console.WriteLine("why " + playerName);
 
-                //Console.WriteLine("\r\nI will take over this dying world");
-                //Console.WriteLine("Will you struggle or die");
+                Console.WriteLine("\r\nI will take over this dying world");
+                Console.WriteLine("Will you struggle or die");
 
-                //string input = Console.ReadLine();
-                //if (input == "Yes" || input == "Y" || input == "yes" || input == "YES" || input == "y")
-                //{
-                //    Console.WriteLine("Lame");
-                //}
-                //else if (input.ToUpper() == "NO" || input.ToUpper() == "N")
-                //{
-                //    Console.WriteLine("Dude y");
-                //}
-                //else
-                //{
-                //    Console.WriteLine("tank");
-                //}
+                string input = Console.ReadLine();
+                if (input == "Yes" || input == "Y" || input == "yes" || input == "YES" || input == "y")
+                {
+                    Console.WriteLine("Lame");
+                }
+                else if (input.ToUpper() == "NO" || input.ToUpper() == "N")
+                {
+                    Console.WriteLine("Dude y");
+                }
+                else
+                {
+                    Console.WriteLine("tank");
+                }
             }
-
+            //Hi jack im pilly
+            //HI JACK IM PILLY
             //make it so game doesn't just close on end
             Console.ReadKey();
         }        
