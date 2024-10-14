@@ -7,7 +7,7 @@ namespace Text_Adventure
         static bool isDev = false;
         static int rInt;
         static int lineDelay = 500;
-        static int redGreenOrBluePurple = 1;
+        static bool redGreenOrBluePurple = false;
         static string playerName = "lol";
 
         /// <summary>
@@ -19,10 +19,24 @@ namespace Text_Adventure
         {
             for (int i = 0; i < line.Length; i++)
             {
+                if (redGreenOrBluePurple == false && playerName == "Deek")
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.BackgroundColor = ConsoleColor.Green;
+                    redGreenOrBluePurple = true;
+
+                }
+                else if (redGreenOrBluePurple == true && playerName == "Deek")
+                {
+                    Console.ForegroundColor = ConsoleColor.Blue;
+                    Console.BackgroundColor = ConsoleColor.Magenta;
+                    redGreenOrBluePurple = false;
+                }
                 Console.Write(line[i]);
                 Thread.Sleep(delay); // Sleep for 150 milliseconds
             }
         }
+
 
 
         /// <summary>
@@ -31,21 +45,24 @@ namespace Text_Adventure
         /// <param name="line">The text your going to display</param>
         /// <param name="delay">The time between each key type </param>
         static void TypeLine(string line, int delay = 50, int lineDelay = 250)
-        {            
-            Type(line, delay);
-            Console.WriteLine();
-            if (redGreenOrBluePurple == 1 && playerName == "Derek")
+        {
+            if (redGreenOrBluePurple == false && playerName == "Derek")
             {
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.BackgroundColor = ConsoleColor.Green;
-                redGreenOrBluePurple *= -1;
+                redGreenOrBluePurple = true;
+
             }
-            else if(redGreenOrBluePurple == -1)
+            else if (redGreenOrBluePurple == true && playerName == "Derek")
             {
                 Console.ForegroundColor = ConsoleColor.Blue;
                 Console.BackgroundColor = ConsoleColor.Magenta;
-                redGreenOrBluePurple *= -1;
+                redGreenOrBluePurple = false;
             }
+
+            Type(line, delay);
+
+            Console.WriteLine();
             Thread.Sleep(lineDelay);
         }
 
@@ -74,7 +91,7 @@ namespace Text_Adventure
             TypeLine("What is your name", rInt);
 
             //ask name of character
-            string playerName = Console.ReadLine();
+            playerName = Console.ReadLine();
 
 
             //Dev Mode (Make text immediate)
@@ -86,21 +103,27 @@ namespace Text_Adventure
             }
             if (playerName == "Derek")
             {
-                //isDev = true;
-                //lineDelay = 0;
-                //rInt = 0;
+                isDev = true;
+                lineDelay = 0;
+                rInt = 0;
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.BackgroundColor = ConsoleColor.Green;
             }
 
 
             TypeLine("Hello " + playerName + " welcome to Sno-isle a place trying so hard to keep a superficial stabilty only mimicing that of pre-pandemic", GetR());
+            //Console.BackgroundColor = ConsoleColor.Black;
             Console.Clear();
 
             Console.Beep(800, 500);
 
             Thread.Sleep(700);
 
+            TypeLine("You have mail", GetR());
+            TypeLine("You have mail", GetR());
+            TypeLine("You have mail", GetR());
+            TypeLine("You have mail", GetR());
+            TypeLine("You have mail", GetR());
             TypeLine("You have mail", GetR());
 
             Console.Beep(800, 500);
